@@ -48,14 +48,6 @@ var lineStructureOptions = [
 	"Preposition, Noun, Conjunction, Pronoun, Verb"
 ];
 
-/*
- * Haikus are poems with a 5-7-5 structure.
- */
-function Poem(numLines) {
-	numLines = this.numLines,
-	lines = [];
-};
-
 /* 
  * Define a function to return a given string with the first letter capitalized.
  */
@@ -183,9 +175,9 @@ function getRandomWord(wordType) {
 }
 
 function getRandomPoem(numLines) {
-	var poem = new Poem(numLines);
+	var poem = [];
 	for (var i = 0; i < numLines; i++) {
-		poem.lines.push(getRandomLine());
+		poem.push(getRandomLine());
 	}
 	return poem;
 }
