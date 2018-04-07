@@ -43,7 +43,7 @@ var dictionary = {
 };
 
 var lineStructureOptions = [
-	"Noun, Verb, Adverb",
+	"Adjective, Noun, Verb, Adverb",
 	"Interjection, Pronoun, Verb",
 	"Preposition, Noun, Pronoun, Verb"
 ];
@@ -77,64 +77,57 @@ function getRandomNumber(min, max) {
 
 function getRandomLine(numSyllables) {
 	var line = "";
-	var syllablesUsed = 0;
 	var lineIncomplete = true;
 	
-	var noun = getRandomWord("Noun");
-	var pronoun = getRandomWord("Pronoun");
-	var verb = getRandomWord("Verb");
-	var adjective = getRandomWord("Adjective");
-	var adverb = getRandomWord("Adverb");
-	var preposition = getRandomWord("Preposition");
-	var conjunction = getRandomWord("Conjunction");
-	var interjection = getRandomWord("Interjection");
+	var noun = "";
+	var pronoun = "";
+	var verb = "";
+	var adjective = "";
+	var adverb = "";
+	var preposition = "";
+	var conjunction = "";
+	var interjection = "";
 	
 	switch (getRandomLineStructure()) {
-		case "Noun, Verb, Adverb":
-			while (syllablesUsed != numSyllables || lineIncomplete) {
-				line = "";
-				syllablesUsed = 0;
-				lineIncomplete = true;
-				line = firstLetterCapitalized(noun.value) + "&nbsp;";
-				syllablesUsed += noun.syllableCount;
-				line = line + verb.value + "&nbsp;";
-				syllablesUsed += verb.syllableCount;
-				line = line + adverb.value;
-				syllablesUsed += adverb.syllableCount;
-				lineIncomplete = false;
+		case "Adjective, Noun, Verb, Adverb":
+			while (lineIncomplete) {
+				adjective = getRandomWord("Adjective");
+				noun = getRandomWord("Noun");
+				verb = getRandomWord("Verb");
+				adverb = getRandomWord("Adverb");
+				if (adjective.syllableCount + noun.syllableCount + verb.syllableCount + adverb.syllableCount == numSyllables) {
+					line = firstLetterCapitalized(adjective.value) + "&nbsp;" + noun.value + "&nbsp;" + verb.value + "&nbsp;" + adverb.value;
+					lineIncomplete = false;
+				}
 			}
 			break;
 		case "Interjection, Pronoun, Verb":
-			while (syllablesUsed != numSyllables || lineIncomplete) {
-				line = "";
-				syllablesUsed = 0;
-				lineIncomplete = true;
-				if (getRandomNumber(0,1) == 0) {
-					line = firstLetterCapitalized(interjection.value) + "!" + "&nbsp;";
+			while (lineIncomplete) {
+				interjection = getRandomWord("Interjection");
+				pronoun = getRandomWord("Pronoun");
+				verb = getRandomWord("Verb");
+				if (interjection.syllableCount + pronoun.syllableCount + verb.syllableCount == numSyllables) {
+					if (getRandomNumber(0,1) == 0) {
+						line = firstLetterCapitalized(interjection.value) + "!" + "&nbsp;";
+					}
+					else {
+						line = firstLetterCapitalized(interjection.value) + "," + "&nbsp;";
+					}
+					line = line + pronoun.value + "&nbsp;" + verb.value;
+					lineIncomplete = false;
 				}
-				else {
-					line = firstLetterCapitalized(interjection.value) + "," + "&nbsp;";
-				}
-				syllablesUsed += interjection.syllableCount;
-				line = line + pronoun.value + "&nbsp;";
-				syllablesUsed += pronoun.syllableCount;
-				line = line + verb.value;
-				syllablesUsed += verb.syllableCount;
-				lineIncomplete = false;
 			}
 			break;
 		case "Preposition, Noun, Pronoun, Verb":
-			while (syllablesUsed != numSyllables || lineIncomplete) {
-				line = "";
-				syllablesUsed = 0;
-				lineIncomplete = true;
-				line = firstLetterCapitalized(preposition.value) + "&nbsp;";
-				syllablesUsed += preposition.syllableCount;
-				line = line + pronoun.value + "&nbsp;";
-				syllablesUsed += pronoun.syllableCount;
-				line = line + verb.value;
-				syllablesUsed += verb.syllableCount;
-				lineIncomplete = false;
+			while (lineIncomplete) {
+				preposition = getRandomWord("Preposition");
+				noun = getRandomWord("Noun");
+				pronoun = getRandomWord("Pronoun");
+				verb = getRandomWord("Verb");
+				if (preposition.syllableCount + noun.syllableCount + pronoun.syllableCount + verb.syllableCount == numSyllables) {
+					line = firstLetterCapitalized(preposition.value) + "&nbsp;" + pronoun.value + "&nbsp;"; + verb.value;
+					lineIncomplete = false;
+				}
 			}
 			break;
 	}
