@@ -108,7 +108,6 @@ function getRandomLine() {
 			line = firstLetterCapitalized(preposition.value) + " " + conjunction.value + " ";
 			preposition = getRandomWord("Preposition");
 			line = line + preposition.value + "," + " " + verb.value + " "  + adverb.value;
-			break;
 	}
 	return line;
 }
@@ -175,7 +174,6 @@ function getRandomWord(wordType) {
 				value:dictionary.interjections[wordIndex],
 				syllableCount:dictionary.interjectionSyllableCounts[wordIndex]
 			};
-			break;
 	}
 	return word;
 }
