@@ -88,12 +88,11 @@ function getRandomLine() {
 			verb = getRandomWord("Verb");
 			adverb = getRandomWord("Adverb");
 			if (getRandomNumber(0,1) == 0) {
-				line = firstLetterCapitalized(interjection.value) + "!" + " ";
+				line = firstLetterCapitalized(interjection.value) + "!" + " " + firstLetterCapitalized(pronoun.value) + " " + verb.value + " " + adverb.value;
 			}
 			else {
-				line = firstLetterCapitalized(interjection.value) + "," + " ";
+				line = firstLetterCapitalized(interjection.value) + "," + " " + pronoun.value + " " + verb.value + " " + adverb.value;
 			}
-			line = line + pronoun.value + " " + verb.value + " " + adverb.value;
 		break;
 		case "Preposition, Noun, Conjunction, Pronoun, Verb":
 			preposition = getRandomWord("Preposition");
