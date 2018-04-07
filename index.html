@@ -48,7 +48,10 @@ var lineStructureOptions = [
 	"Preposition, Noun, Conjunction, Pronoun, Verb",
 	"Adverb, Verb, Preposition, Adjective, Noun",
 	"Adjective, Noun, Adjective, Noun, Adjective, Noun",
-	"Preposition, Conjunction, Preposition, Verb, Adverb"
+	"Preposition, Conjunction, Preposition, Verb, Adverb",
+	"Verb, Preposition",
+	"Noun, Conjunction, Noun",
+	"Adjective, Adjective, Adjective, Noun"
 ];
 
 /* 
@@ -99,15 +102,31 @@ function getRandomLine() {
 			line = firstLetterCapitalized(adjective.value) + " " + noun.value + "," + " ";
 			adjective = getRandomWord("Adjective");
 			noun = getRandomWord("Noun");
-			line = line + adjective.value + " " + noun.value + "," + " ";
+			line +=  adjective.value + " " + noun.value + "," + " ";
 			adjective = getRandomWord("Adjective");
 			noun = getRandomWord("Noun");
-			line = line + adjective.value + " " + noun.value;
+			line += adjective.value + " " + noun.value;
 			break;
 		case "Preposition, Conjunction, Preposition, Verb, Adverb":
 			line = firstLetterCapitalized(preposition.value) + " " + conjunction.value + " ";
 			preposition = getRandomWord("Preposition");
-			line = line + preposition.value + "," + " " + verb.value + " "  + adverb.value;
+			line += preposition.value + "," + " " + verb.value + " "  + adverb.value;
+			break;
+		case "Verb, Preposition":
+			line = firstLetterCapitalized(verb.value) + " " + preposition.value;
+			break;
+		case "Noun, Conjunction, Noun":
+			line = firstLetterCapitalized(noun.value) + " " + conjunction.value + " ";
+			noun = getRandomWord("Noun");
+			line += noun.value;
+			break;
+		case "Adjective, Adjective, Adjective, Noun":
+			line = adjective.value + " ";
+			adjective = getRandomWord("Adjective");
+			line += adjective.value + " ";
+			adjective = getRandomWord("Adjective");
+			line += adjective.value + " " + noun.value;
+			break;
 	}
 	return line;
 }
@@ -185,6 +204,9 @@ function getRandomPoem(numLines) {
 	}
 	return poem;
 }
-
+console.log(getRandomPoem(4));
+console.log(getRandomPoem(5));
 console.log(getRandomPoem(6));
+console.log(getRandomPoem(7));
+console.log(getRandomPoem(8));
 </script>
