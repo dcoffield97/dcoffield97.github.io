@@ -45,20 +45,15 @@ var dictionary = {
 var lineStructureOptions = [
 	"Adjective, Noun, Verb, Adverb",
 	"Interjection, Pronoun, Verb",
-	"Preposition, Noun, Pronoun, Verb"
+	"Preposition, Noun, Conjunction, Pronoun, Verb"
 ];
 
 /*
  * Haikus are poems with a 5-7-5 structure.
  */
-function Haiku() {
-	firstLineSyllables = 5,
-	secondLineSyllables = 7,
-	thirdLineSyllables = 5,
-	
-	firstLine = "",
-	secondLine = "",
-	thirdLine = ""
+function Poem(numLines) {
+	numLines = this.numLines,
+	lines = [];
 };
 
 /* 
@@ -75,9 +70,8 @@ function getRandomNumber(min, max) {
     return Math.floor(Math.random() * parseInt(max)) + parseInt(min);
 }
 
-function getRandomLine(numSyllables) {
+function getRandomLine() {
 	var line = "";
-	var lineIncomplete = true;
 	
 	var noun = "";
 	var pronoun = "";
@@ -90,46 +84,33 @@ function getRandomLine(numSyllables) {
 	
 	switch (getRandomLineStructure()) {
 		case "Adjective, Noun, Verb, Adverb":
-			while (lineIncomplete) {
-				adjective = getRandomWord("Adjective");
-				noun = getRandomWord("Noun");
-				verb = getRandomWord("Verb");
-				adverb = getRandomWord("Adverb");
-				if ((adjective.syllableCount + noun.syllableCount + verb.syllableCount + adverb.syllableCount) == numSyllables) {
-					line = firstLetterCapitalized(adjective.value) + "&nbsp;" + noun.value + "&nbsp;" + verb.value + "&nbsp;" + adverb.value;
-					lineIncomplete = false;
-				}
-			}
+			adjective = getRandomWord("Adjective");
+			noun = getRandomWord("Noun");
+			verb = getRandomWord("Verb");
+			adverb = getRandomWord("Adverb");
+			line = firstLetterCapitalized(adjective.value) + " " + noun.value + " " + verb.value + " " + adverb.value;
 			break;
-		case "Interjection, Pronoun, Verb":
-			while (lineIncomplete) {
-				interjection = getRandomWord("Interjection");
-				pronoun = getRandomWord("Pronoun");
-				verb = getRandomWord("Verb");
-				if ((interjection.syllableCount + pronoun.syllableCount + verb.syllableCount) == numSyllables) {
-					if (getRandomNumber(0,1) == 0) {
-						line = firstLetterCapitalized(interjection.value) + "!" + "&nbsp;";
-					}
-					else {
-						line = firstLetterCapitalized(interjection.value) + "," + "&nbsp;";
-					}
-					line = line + pronoun.value + "&nbsp;" + verb.value;
-					lineIncomplete = false;
-				}
+		case "Interjection, Pronoun, Verb, Adverb":
+			interjection = getRandomWord("Interjection");
+			pronoun = getRandomWord("Pronoun");
+			verb = getRandomWord("Verb");
+			adverb = getRandomWord("Adverb");
+			if (getRandomNumber(0,1) == 0) {
+				line = firstLetterCapitalized(interjection.value) + "!" + " ";
 			}
+			else {
+				line = firstLetterCapitalized(interjection.value) + "," + " ";
+			}
+			line = line + pronoun.value + " " + verb.value + " " + adverb.value;
 			break;
-		case "Preposition, Noun, Pronoun, Verb":
-			while (lineIncomplete) {
+		case "Preposition, Noun, Conjunction, Pronoun, Verb":
 				preposition = getRandomWord("Preposition");
 				noun = getRandomWord("Noun");
+				conjunction = getRandomWord("Conjunction");
 				pronoun = getRandomWord("Pronoun");
 				verb = getRandomWord("Verb");
-				if ((preposition.syllableCount + noun.syllableCount + pronoun.syllableCount + verb.syllableCount) == numSyllables) {
-					line = firstLetterCapitalized(preposition.value) + "&nbsp;" + pronoun.value + "&nbsp;"; + verb.value;
-					lineIncomplete = false;
-				}
-			}
-			break;
+				line = firstLetterCapitalized(preposition.value) + " " + pronoun.value + " "; + conjunction.value + " " + verb.value;
+				break;
 	}
 	return line;
 }
@@ -201,13 +182,13 @@ function getRandomWord(wordType) {
 	return word;
 }
 
-function getRandomHaiku() {
-	var haiku = new Haiku();
-	haiku.firstLine = getRandomLine(haiku.firstLineSyllables);
-	haiku.secondLine = getRandomLine(haiku.secondLineSyllables);
-	haiku.thirdLine = getRandomLine(haiku.thirdLineSyllables);
-	return haiku;
+function getRandomPoem(numLines) {
+	var poem = new Poem(numLines);
+	for (var i = 0; i < numLines; i++) {
+		poem.lines.push(getRandomLine());
+	}
+	return poem;
 }
 
-console.log(getRandomHaiku());
+console.log(getRandomPoem(5));
 </script>
