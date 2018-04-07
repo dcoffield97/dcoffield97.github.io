@@ -45,7 +45,10 @@ var dictionary = {
 var lineStructureOptions = [
 	"Adjective, Noun, Verb, Adverb",
 	"Interjection, Pronoun, Verb, Adverb",
-	"Preposition, Noun, Conjunction, Pronoun, Verb"
+	"Preposition, Noun, Conjunction, Pronoun, Verb",
+	"Adverb, Verb, Preposition, Adjective, Noun",
+	"Adjective, Noun, Adjective, Noun, Adjective, Noun",
+	"Preposition, Conjunction, Preposition, Verb, Adverb"
 ];
 
 /* 
@@ -65,43 +68,47 @@ function getRandomNumber(min, max) {
 function getRandomLine() {
 	var line = "";
 	
-	var noun = "";
-	var pronoun = "";
-	var verb = "";
-	var adjective = "";
-	var adverb = "";
-	var preposition = "";
-	var conjunction = "";
-	var interjection = "";
+	var noun = getRandomWord("Noun");
+	var pronoun = getRandomWord("Pronoun");
+	var verb = getRandomWord("Verb");
+	var adjective = getRandomWord("Adjective");
+	var adverb = getRandomWord("Adverb");
+	var preposition = getRandomWord("Preposition");
+	var conjunction = getRandomWord("Conjunction");
+	var interjection = getRandomWord("Interjection");
 	
 	switch (getRandomLineStructure()) {
 		case "Adjective, Noun, Verb, Adverb":
-			adjective = getRandomWord("Adjective");
-			noun = getRandomWord("Noun");
-			verb = getRandomWord("Verb");
-			adverb = getRandomWord("Adverb");
 			line = firstLetterCapitalized(adjective.value) + " " + noun.value + " " + verb.value + " " + adverb.value;
-		break;
+			break;
 		case "Interjection, Pronoun, Verb, Adverb":
-			interjection = getRandomWord("Interjection");
-			pronoun = getRandomWord("Pronoun");
-			verb = getRandomWord("Verb");
-			adverb = getRandomWord("Adverb");
 			if (getRandomNumber(0,1) == 0) {
 				line = firstLetterCapitalized(interjection.value) + "!" + " " + firstLetterCapitalized(pronoun.value) + " " + verb.value + " " + adverb.value;
 			}
 			else {
 				line = firstLetterCapitalized(interjection.value) + "," + " " + pronoun.value + " " + verb.value + " " + adverb.value;
 			}
-		break;
+			break;
 		case "Preposition, Noun, Conjunction, Pronoun, Verb":
-			preposition = getRandomWord("Preposition");
-			noun = getRandomWord("Noun");
-			conjunction = getRandomWord("Conjunction");
-			pronoun = getRandomWord("Pronoun");
-			verb = getRandomWord("Verb");
 			line = firstLetterCapitalized(preposition.value) + " " + pronoun.value + " "; + conjunction.value + " " + verb.value;
-		break;
+			break;
+		case "Adverb, Verb, Preposition, Adjective, Noun":
+			line = firstLetterCapitalized(adverb.value) + " " + verb.value + " " + preposition.value + " " + adjective.value + " " + noun.value;
+			break;
+		case "Adjective, Noun, Adjective, Noun, Adjective, Noun":
+			line = firstLetterCapitalized(adjective.value) + " " + noun.value + "," + " ";
+			adjective = getRandomWord("Adjective");
+			noun = getRandomWord("Noun");
+			line = line + adjective.value + " " + noun.value + "," + " ";
+			adjective = getRandomWord("Adjective");
+			noun = getRandomWord("Noun");
+			line = line + adjective.value + " " + noun.value;
+			break;
+		case "Preposition, Conjunction, Preposition, Verb, Adverb":
+			line = firstLetterCapitalized(preposition.value) + " " + conjunction.value + " ";
+			preposition = getRandomWord("Preposition");
+			line = line + preposition.value + "," + " " + verb.value + " "  + adverb.value;
+			break;
 	}
 	return line;
 }
@@ -119,56 +126,56 @@ function getRandomWord(wordType) {
 				value:dictionary.nouns[wordIndex],
 				syllableCount:dictionary.nounSyllableCounts[wordIndex]
 			};
-		break;
+			break;
 		case "Pronoun":
 			wordIndex = getRandomNumber(0,dictionary.pronounCount-1);
 			word = {
 				value:dictionary.pronouns[wordIndex],
 				syllableCount:dictionary.pronounSyllableCounts[wordIndex]
 			};
-		break;
+			break;
 		case "Verb":
 			wordIndex = getRandomNumber(0,dictionary.verbCount-1);
 			word = {
 				value:dictionary.verbs[wordIndex],
 				syllableCount:dictionary.verbSyllableCounts[wordIndex]
 			};
-		break;
+			break;
 		case "Adjective":
 			wordIndex = getRandomNumber(0,dictionary.adjectiveCount-1);
 			word = {
 				value:dictionary.adjectives[wordIndex],
 				syllableCount:dictionary.adjectiveSyllableCounts[wordIndex]
 			};
-		break;
+			break;
 		case "Adverb":
 			wordIndex = getRandomNumber(0,dictionary.adverbCount-1);
 			word = {
 				value:dictionary.adverbs[wordIndex],
 				syllableCount:dictionary.adverbSyllableCounts[wordIndex]
 			};
-		break;
+			break;
 		case "Preposition":
 			wordIndex = getRandomNumber(0,dictionary.prepositionCount-1);
 			word = {
 				value:dictionary.prepositions[wordIndex],
 				syllableCount:dictionary.prepositionSyllableCounts[wordIndex]
 			};
-		break;
+			break;
 		case "Conjunction":
 			wordIndex = getRandomNumber(0,dictionary.conjunctionCount-1);
 			word = {
 				value:dictionary.conjunctions[wordIndex],
 				syllableCount:dictionary.conjunctionSyllableCounts[wordIndex]
 			};
-		break;
+			break;
 		case "Interjection":
 			wordIndex = getRandomNumber(0,dictionary.interjectionCount-1);
 			word = {
 				value:dictionary.interjections[wordIndex],
 				syllableCount:dictionary.interjectionSyllableCounts[wordIndex]
 			};
-		break;
+			break;
 	}
 	return word;
 }
@@ -181,5 +188,5 @@ function getRandomPoem(numLines) {
 	return poem;
 }
 
-console.log(getRandomPoem(5));
+console.log(getRandomPoem(6));
 </script>
