@@ -70,6 +70,7 @@ function getRandomNumber(min, max) {
 
 function getRandomLine() {
 	var line = "";
+	var lineStructure = getRandomLineStructure();
 	
 	var noun = getRandomWord("Noun");
 	var pronoun = getRandomWord("Pronoun");
@@ -80,7 +81,7 @@ function getRandomLine() {
 	var conjunction = getRandomWord("Conjunction");
 	var interjection = getRandomWord("Interjection");
 	
-	switch (getRandomLineStructure()) {
+	switch (lineStructure) {
 		case "Adjective, Noun, Verb, Adverb":
 			line = firstLetterCapitalized(adjective.value) + " " + noun.value + " " + verb.value + " " + adverb.value;
 			break;
@@ -93,7 +94,7 @@ function getRandomLine() {
 			}
 			break;
 		case "Preposition, Noun, Conjunction, Pronoun, Verb":
-			line = firstLetterCapitalized(preposition.value) + " " + pronoun.value + " "; + conjunction.value + " " + verb.value;
+			line = firstLetterCapitalized(preposition.value) + " " + noun.value + " "; + conjunction.value + " " + verb.value;
 			break;
 		case "Adverb, Verb, Preposition, Adjective, Noun":
 			line = firstLetterCapitalized(adverb.value) + " " + verb.value + " " + preposition.value + " " + adjective.value + " " + noun.value;
@@ -126,8 +127,8 @@ function getRandomLine() {
 			line += adjective.value + " ";
 			adjective = getRandomWord("Adjective");
 			line += adjective.value + " " + noun.value;
-			break;
 	}
+	console.log(lineStructure);
 	return line;
 }
 
