@@ -103,6 +103,7 @@ function getRandomLine(numSyllables) {
 				syllablesUsed += adverb.syllableCount;
 				lineIncomplete = false;
 			}
+			break;
 		case "Interjection, Pronoun, Verb":
 			while (syllablesUsed != numSyllables && lineIncomplete) {
 				line = "";
@@ -121,6 +122,7 @@ function getRandomLine(numSyllables) {
 				syllablesUsed += verb.syllableCount;
 				lineIncomplete = false;
 			}
+			break;
 		case "Preposition, Noun, Pronoun, Verb":
 			while (syllablesUsed != numSyllables && lineIncomplete) {
 				line = "";
@@ -134,6 +136,7 @@ function getRandomLine(numSyllables) {
 				syllablesUsed += verb.syllableCount;
 				lineIncomplete = false;
 			}
+			break;
 	}
 	return line;
 }
@@ -151,48 +154,56 @@ function getRandomWord(wordType) {
 				value:dictionary.nouns[wordIndex],
 				syllableCount:dictionary.nounSyllableCounts[wordIndex]
 			};
+			break;
 		case "Pronoun":
 			wordIndex = getRandomNumber(0,dictionary.pronounCount-1);
 			word = {
 				value:dictionary.pronouns[wordIndex],
 				syllableCount:dictionary.pronounSyllableCounts[wordIndex]
 			};
+			break;
 		case "Verb":
 			wordIndex = getRandomNumber(0,dictionary.verbCount-1);
 			word = {
 				value:dictionary.verbs[wordIndex],
 				syllableCount:dictionary.verbSyllableCounts[wordIndex]
 			};
+			break;
 		case "Adjective":
 			wordIndex = getRandomNumber(0,dictionary.adjectiveCount-1);
 			word = {
 				value:dictionary.adjectives[wordIndex],
 				syllableCount:dictionary.adjectiveSyllableCounts[wordIndex]
 			};
+			break;
 		case "Adverb":
 			wordIndex = getRandomNumber(0,dictionary.adverbCount-1);
 			word = {
 				value:dictionary.adverbs[wordIndex],
 				syllableCount:dictionary.adverbSyllableCounts[wordIndex]
 			};
+			break;
 		case "Preposition":
 			wordIndex = getRandomNumber(0,dictionary.prepositionCount-1);
 			word = {
 				value:dictionary.prepositions[wordIndex],
 				syllableCount:dictionary.prepositionSyllableCounts[wordIndex]
 			};
+			break;
 		case "Conjunction":
 			wordIndex = getRandomNumber(0,dictionary.conjunctionCount-1);
 			word = {
 				value:dictionary.conjunctions[wordIndex],
 				syllableCount:dictionary.conjunctionSyllableCounts[wordIndex]
 			};
+			break;
 		case "Interjection":
 			wordIndex = getRandomNumber(0,dictionary.interjectionCount-1);
 			word = {
 				value:dictionary.interjections[wordIndex],
 				syllableCount:dictionary.interjectionSyllableCounts[wordIndex]
 			};
+			break;
 	}
 	return word;
 }
