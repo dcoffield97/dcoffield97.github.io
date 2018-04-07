@@ -69,7 +69,7 @@ function getRandomNumber(min, max) {
 }
 
 function getRandomLine() {
-	var line = "";
+	var line = "<br>";
 	var lineStructure = getRandomLineStructure();
 	
 	var noun = getRandomWord("Noun");
@@ -83,24 +83,24 @@ function getRandomLine() {
 	
 	switch (lineStructure) {
 		case "Adjective, Noun, Verb, Adverb":
-			line = firstLetterCapitalized(adjective.value) + " " + noun.value + " " + verb.value + " " + adverb.value + "<br>";
+			line += firstLetterCapitalized(adjective.value) + " " + noun.value + " " + verb.value + " " + adverb.value + "<br>";
 			break;
 		case "Interjection, Pronoun, Verb, Adverb":
 			if (getRandomNumber(0,1) == 0) {
-				line = firstLetterCapitalized(interjection.value) + "!" + " " + firstLetterCapitalized(pronoun.value) + " " + verb.value + " " + adverb.value + "<br>";
+				line += firstLetterCapitalized(interjection.value) + "!" + " " + firstLetterCapitalized(pronoun.value) + " " + verb.value + " " + adverb.value + "<br>";
 			}
 			else {
-				line = firstLetterCapitalized(interjection.value) + "," + " " + pronoun.value + " " + verb.value + " " + adverb.value + "<br>";
+				line += firstLetterCapitalized(interjection.value) + "," + " " + pronoun.value + " " + verb.value + " " + adverb.value + "<br>";
 			}
 			break;
 		case "Preposition, Noun, Conjunction, Pronoun, Verb":
-			line = firstLetterCapitalized(preposition.value) + " " + noun.value + " " + conjunction.value + " " + pronoun.value + " " + verb.value + "<br>";
+			line += firstLetterCapitalized(preposition.value) + " " + noun.value + " " + conjunction.value + " " + pronoun.value + " " + verb.value + "<br>";
 			break;
 		case "Adverb, Verb, Preposition, Adjective, Noun":
-			line = firstLetterCapitalized(adverb.value) + " " + verb.value + " " + preposition.value + " " + adjective.value + " " + noun.value + "<br>";
+			line += firstLetterCapitalized(adverb.value) + " " + verb.value + " " + preposition.value + " " + adjective.value + " " + noun.value + "<br>";
 			break;
 		case "Adjective, Noun, Adjective, Noun, Adjective, Noun":
-			line = firstLetterCapitalized(adjective.value) + " " + noun.value + "," + " ";
+			line += firstLetterCapitalized(adjective.value) + " " + noun.value + "," + " ";
 			adjective = getRandomWord("Adjective");
 			noun = getRandomWord("Noun");
 			line +=  adjective.value + " " + noun.value + "," + " ";
@@ -109,26 +109,26 @@ function getRandomLine() {
 			line += adjective.value + " " + noun.value + "<br>";
 			break;
 		case "Preposition, Conjunction, Preposition, Verb, Adverb":
-			line = firstLetterCapitalized(preposition.value) + " " + conjunction.value + " ";
+			line += firstLetterCapitalized(preposition.value) + " " + conjunction.value + " ";
 			preposition = getRandomWord("Preposition");
 			line += preposition.value + "," + " " + verb.value + " "  + adverb.value + "<br>";
 			break;
 		case "Verb, Preposition":
-			line = firstLetterCapitalized(verb.value) + " " + preposition.value + "<br>";
+			line += firstLetterCapitalized(verb.value) + " " + preposition.value + "<br>";
 			break;
 		case "Noun, Conjunction, Noun":
-			line = firstLetterCapitalized(noun.value) + " " + conjunction.value + " ";
+			line += firstLetterCapitalized(noun.value) + " " + conjunction.value + " ";
 			noun = getRandomWord("Noun");
 			line += noun.value + "<br>";
 			break;
 		case "Adjective, Adjective, Adjective, Noun":
-			line = adjective.value + " ";
+			line += adjective.value + " ";
 			adjective = getRandomWord("Adjective");
 			line += adjective.value + " ";
 			adjective = getRandomWord("Adjective");
 			line += adjective.value + " " + noun.value + "<br>";
 	}
-	return line;
+	return line.substring(1,line.length);
 }
 
 function getRandomLineStructure() {
