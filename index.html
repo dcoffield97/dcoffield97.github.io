@@ -91,7 +91,7 @@ function getRandomLine(numSyllables) {
 	
 	switch (getRandomLineStructure()) {
 		case "Noun, Verb, Adverb":
-			while (syllablesUsed != numSyllables && lineIncomplete) {
+			while (syllablesUsed != numSyllables || lineIncomplete) {
 				line = "";
 				syllablesUsed = 0;
 				lineIncomplete = true;
@@ -105,7 +105,7 @@ function getRandomLine(numSyllables) {
 			}
 			break;
 		case "Interjection, Pronoun, Verb":
-			while (syllablesUsed != numSyllables && lineIncomplete) {
+			while (syllablesUsed != numSyllables || lineIncomplete) {
 				line = "";
 				syllablesUsed = 0;
 				lineIncomplete = true;
@@ -124,7 +124,7 @@ function getRandomLine(numSyllables) {
 			}
 			break;
 		case "Preposition, Noun, Pronoun, Verb":
-			while (syllablesUsed != numSyllables && lineIncomplete) {
+			while (syllablesUsed != numSyllables || lineIncomplete) {
 				line = "";
 				syllablesUsed = 0;
 				lineIncomplete = true;
