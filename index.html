@@ -95,10 +95,10 @@ function getRandomLine(numSyllables) {
 				noun = getRandomWord("Noun");
 				verb = getRandomWord("Verb");
 				adverb = getRandomWord("Adverb");
-				//if (adjective.syllableCount + noun.syllableCount + verb.syllableCount + adverb.syllableCount == numSyllables) {
+				if ((adjective.syllableCount + noun.syllableCount + verb.syllableCount + adverb.syllableCount) == numSyllables) {
 					line = firstLetterCapitalized(adjective.value) + "&nbsp;" + noun.value + "&nbsp;" + verb.value + "&nbsp;" + adverb.value;
 					lineIncomplete = false;
-				//}
+				}
 			}
 			break;
 		case "Interjection, Pronoun, Verb":
@@ -106,7 +106,7 @@ function getRandomLine(numSyllables) {
 				interjection = getRandomWord("Interjection");
 				pronoun = getRandomWord("Pronoun");
 				verb = getRandomWord("Verb");
-				//if (interjection.syllableCount + pronoun.syllableCount + verb.syllableCount == numSyllables) {
+				if ((interjection.syllableCount + pronoun.syllableCount + verb.syllableCount) == numSyllables) {
 					if (getRandomNumber(0,1) == 0) {
 						line = firstLetterCapitalized(interjection.value) + "!" + "&nbsp;";
 					}
@@ -115,7 +115,7 @@ function getRandomLine(numSyllables) {
 					}
 					line = line + pronoun.value + "&nbsp;" + verb.value;
 					lineIncomplete = false;
-				//}
+				}
 			}
 			break;
 		case "Preposition, Noun, Pronoun, Verb":
@@ -124,10 +124,10 @@ function getRandomLine(numSyllables) {
 				noun = getRandomWord("Noun");
 				pronoun = getRandomWord("Pronoun");
 				verb = getRandomWord("Verb");
-				//if (preposition.syllableCount + noun.syllableCount + pronoun.syllableCount + verb.syllableCount == numSyllables) {
+				if ((preposition.syllableCount + noun.syllableCount + pronoun.syllableCount + verb.syllableCount) == numSyllables) {
 					line = firstLetterCapitalized(preposition.value) + "&nbsp;" + pronoun.value + "&nbsp;"; + verb.value;
 					lineIncomplete = false;
-				//}
+				}
 			}
 			break;
 	}
