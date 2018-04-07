@@ -44,7 +44,7 @@ var dictionary = {
 
 var lineStructureOptions = [
 	"Adjective, Noun, Verb, Adverb",
-	"Interjection, Pronoun, Verb",
+	"Interjection, Pronoun, Verb, Adverb",
 	"Preposition, Noun, Conjunction, Pronoun, Verb"
 ];
 
@@ -81,7 +81,7 @@ function getRandomLine() {
 			verb = getRandomWord("Verb");
 			adverb = getRandomWord("Adverb");
 			line = firstLetterCapitalized(adjective.value) + " " + noun.value + " " + verb.value + " " + adverb.value;
-			break;
+		break;
 		case "Interjection, Pronoun, Verb, Adverb":
 			interjection = getRandomWord("Interjection");
 			pronoun = getRandomWord("Pronoun");
@@ -94,15 +94,15 @@ function getRandomLine() {
 				line = firstLetterCapitalized(interjection.value) + "," + " ";
 			}
 			line = line + pronoun.value + " " + verb.value + " " + adverb.value;
-			break;
+		break;
 		case "Preposition, Noun, Conjunction, Pronoun, Verb":
-				preposition = getRandomWord("Preposition");
-				noun = getRandomWord("Noun");
-				conjunction = getRandomWord("Conjunction");
-				pronoun = getRandomWord("Pronoun");
-				verb = getRandomWord("Verb");
-				line = firstLetterCapitalized(preposition.value) + " " + pronoun.value + " "; + conjunction.value + " " + verb.value;
-				break;
+			preposition = getRandomWord("Preposition");
+			noun = getRandomWord("Noun");
+			conjunction = getRandomWord("Conjunction");
+			pronoun = getRandomWord("Pronoun");
+			verb = getRandomWord("Verb");
+			line = firstLetterCapitalized(preposition.value) + " " + pronoun.value + " "; + conjunction.value + " " + verb.value;
+		break;
 	}
 	return line;
 }
@@ -120,56 +120,56 @@ function getRandomWord(wordType) {
 				value:dictionary.nouns[wordIndex],
 				syllableCount:dictionary.nounSyllableCounts[wordIndex]
 			};
-			break;
+		break;
 		case "Pronoun":
 			wordIndex = getRandomNumber(0,dictionary.pronounCount-1);
 			word = {
 				value:dictionary.pronouns[wordIndex],
 				syllableCount:dictionary.pronounSyllableCounts[wordIndex]
 			};
-			break;
+		break;
 		case "Verb":
 			wordIndex = getRandomNumber(0,dictionary.verbCount-1);
 			word = {
 				value:dictionary.verbs[wordIndex],
 				syllableCount:dictionary.verbSyllableCounts[wordIndex]
 			};
-			break;
+		break;
 		case "Adjective":
 			wordIndex = getRandomNumber(0,dictionary.adjectiveCount-1);
 			word = {
 				value:dictionary.adjectives[wordIndex],
 				syllableCount:dictionary.adjectiveSyllableCounts[wordIndex]
 			};
-			break;
+		break;
 		case "Adverb":
 			wordIndex = getRandomNumber(0,dictionary.adverbCount-1);
 			word = {
 				value:dictionary.adverbs[wordIndex],
 				syllableCount:dictionary.adverbSyllableCounts[wordIndex]
 			};
-			break;
+		break;
 		case "Preposition":
 			wordIndex = getRandomNumber(0,dictionary.prepositionCount-1);
 			word = {
 				value:dictionary.prepositions[wordIndex],
 				syllableCount:dictionary.prepositionSyllableCounts[wordIndex]
 			};
-			break;
+		break;
 		case "Conjunction":
 			wordIndex = getRandomNumber(0,dictionary.conjunctionCount-1);
 			word = {
 				value:dictionary.conjunctions[wordIndex],
 				syllableCount:dictionary.conjunctionSyllableCounts[wordIndex]
 			};
-			break;
+		break;
 		case "Interjection":
 			wordIndex = getRandomNumber(0,dictionary.interjectionCount-1);
 			word = {
 				value:dictionary.interjections[wordIndex],
 				syllableCount:dictionary.interjectionSyllableCounts[wordIndex]
 			};
-			break;
+		break;
 	}
 	return word;
 }
