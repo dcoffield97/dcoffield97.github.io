@@ -204,7 +204,7 @@ function getRandomPoem(numLines) {
 	}
 	return poem;
 }
-$( document ).ready(function() {
+$(window).on("load", function(){
 document.write(getRandomPoem(5) + "<br>" + getRandomPoem(6) + "<br>" + getRandomPoem(7) + "<br>" + getRandomPoem(8));
 });
 </script>
