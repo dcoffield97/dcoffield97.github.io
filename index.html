@@ -69,7 +69,7 @@ function getRandomNumber(min, max) {
 }
 
 function getRandomLine() {
-	var line = "&nbsp;&nbsp;&nbsp;&nbsp;";
+	var line = "";
 	var lineStructure = getRandomLineStructure();
 	
 	var noun = getRandomWord("Noun");
@@ -202,7 +202,7 @@ function getRandomPoem(numLines) {
 	for (var i = 0; i < numLines; i++) {
 		poem.push(getRandomLine());
 	}
-	return poem;
+	return poem.join("");
 }
 document.write(getRandomPoem(5) + "<br>" + getRandomPoem(6) + "<br>" + getRandomPoem(7) + "<br>" + getRandomPoem(8));
 </script>
