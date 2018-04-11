@@ -130,7 +130,7 @@ function getRandomLineStructure() {
 
 function getRandomWord(wordType) {
 	var word = {};
-	var vocabulary = [];
+	var vocabulary = {};
 	if (wordType == "Pronoun" || wordType == "Preposition" || wordType == "Conjunction" || wordType == "Interjection") {
 		vocabulary = dictionary.common;
 	}
@@ -144,49 +144,49 @@ function getRandomWord(wordType) {
 	}
 	switch (wordType) {
 		case "Noun":
-			wordIndex = getRandomNumber(0,vocabulary.length-1);
+			wordIndex = getRandomNumber(0,vocabulary.nouns.length-1);
 			word = {
 				value:vocabulary.nouns[wordIndex],
 			};
 			break;
 		case "Pronoun":
-			wordIndex = getRandomNumber(0,vocabulary.length-1);
+			wordIndex = getRandomNumber(0,vocabulary.pronouns.length-1);
 			word = {
 				value:vocabulary.pronouns[wordIndex],
 			};
 			break;
 		case "Verb":
-			wordIndex = getRandomNumber(0,vocabulary.length-1);
+			wordIndex = getRandomNumber(0,vocabulary.verbs.length-1);
 			word = {
 				value:vocabulary.verbs[wordIndex],
 			};
 			break;
 		case "Adjective":
-			wordIndex = getRandomNumber(0,vocabulary.length-1);
+			wordIndex = getRandomNumber(0,vocabulary.adjectives.length-1);
 			word = {
 				value:vocabulary.adjectives[wordIndex],
 			};
 			break;
 		case "Adverb":
-			wordIndex = getRandomNumber(0,vocabulary.length-1);
+			wordIndex = getRandomNumber(0,vocabulary.adverbs.length-1);
 			word = {
 				value:vocabulary.adverbs[wordIndex],
 			};
 			break;
 		case "Preposition":
-			wordIndex = getRandomNumber(0,vocabulary.length-1);
+			wordIndex = getRandomNumber(0,vocabulary.prepositions.length-1);
 			word = {
 				value:vocabulary.prepositions[wordIndex],
 			};
 			break;
 		case "Conjunction":
-			wordIndex = getRandomNumber(0,vocabulary.length-1);
+			wordIndex = getRandomNumber(0,vocabulary.conjunctions.length-1);
 			word = {
 				value:vocabulary.conjunctions[wordIndex],
 			};
 			break;
 		case "Interjection":
-			wordIndex = getRandomNumber(0,vocabulary.length-1);
+			wordIndex = getRandomNumber(0,vocabulary.interjections.length-1);
 			word = {
 				value:vocabulary.interjections[wordIndex],
 			};
