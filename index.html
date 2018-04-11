@@ -40,10 +40,10 @@ var lineStructureOptions = [
 	"Preposition, Noun, Conjunction, Pronoun, Verb",
 	"Adverb, Verb, Preposition, Adjective, Noun",
 	"Adjective, Noun, Adjective, Noun, Adjective, Noun",
-	"Preposition, Conjunction, Preposition, Verb, Adverb",
-	"Verb, Preposition",
-	"Noun, Conjunction, Noun",
-	"Adjective, Adjective, Adjective, Noun"
+	"Preposition, Conjunction, Preposition, Noun, Verb, Adverb",
+	"Verb, Preposition, Noun",
+	"Adjective, Noun, Conjunction, Adjective, Noun",
+	"Adjective, Adjective, Adjective, Noun, Verb"
 ];
 
 /* 
@@ -100,25 +100,26 @@ function getRandomLine() {
 			noun = getRandomWord("Noun");
 			line += adjective.value + " " + noun.value;
 			break;
-		case "Preposition, Conjunction, Preposition, Verb, Adverb":
+		case "Preposition, Conjunction, Preposition, Noun, Verb, Adverb":
 			line += firstLetterCapitalized(preposition.value) + " " + conjunction.value + " ";
 			preposition = getRandomWord("Preposition");
-			line += preposition.value + "," + " " + verb.value + " "  + adverb.value;
+			line += preposition.value + "," + " " + noun.value + " " + verb.value + " "  + adverb.value;
 			break;
-		case "Verb, Preposition":
-			line += firstLetterCapitalized(verb.value) + " " + preposition.value;
+		case "Verb, Preposition, Noun":
+			line += firstLetterCapitalized(verb.value) + " " + preposition.value + " " + noun.value;
 			break;
-		case "Noun, Conjunction, Noun":
-			line += firstLetterCapitalized(noun.value) + " " + conjunction.value + " ";
+		case "Adjective, Noun, Conjunction, Adjective, Noun":
+			line += firstLetterCapitalized(adjective.value) + " " + noun.value + " " + conjunction.value + " ";
+			adjective = getRandomWord("Adjective");
 			noun = getRandomWord("Noun");
-			line += noun.value;
-			break;
-		case "Adjective, Adjective, Adjective, Noun":
-			line += adjective.value + " ";
-			adjective = getRandomWord("Adjective");
-			line += adjective.value + " ";
-			adjective = getRandomWord("Adjective");
 			line += adjective.value + " " + noun.value;
+			break;
+		case "Adjective, Adjective, Adjective, Noun, Verb":
+			line += adjective.value + " ";
+			adjective = getRandomWord("Adjective");
+			line += adjective.value + " ";
+			adjective = getRandomWord("Adjective");
+			line += adjective.value + " " + noun.value + " " + verb.value;
 	}
 	line += "<br>";
 	return line;
@@ -146,49 +147,49 @@ function getRandomWord(wordType) {
 		case "Noun":
 			wordIndex = getRandomNumber(0,vocabulary.nouns.length-1);
 			word = {
-				value:vocabulary.nouns[wordIndex],
+				value:vocabulary.nouns[wordIndex]
 			};
 			break;
 		case "Pronoun":
 			wordIndex = getRandomNumber(0,vocabulary.pronouns.length-1);
 			word = {
-				value:vocabulary.pronouns[wordIndex],
+				value:vocabulary.pronouns[wordIndex]
 			};
 			break;
 		case "Verb":
 			wordIndex = getRandomNumber(0,vocabulary.verbs.length-1);
 			word = {
-				value:vocabulary.verbs[wordIndex],
+				value:vocabulary.verbs[wordIndex]
 			};
 			break;
 		case "Adjective":
 			wordIndex = getRandomNumber(0,vocabulary.adjectives.length-1);
 			word = {
-				value:vocabulary.adjectives[wordIndex],
+				value:vocabulary.adjectives[wordIndex]
 			};
 			break;
 		case "Adverb":
 			wordIndex = getRandomNumber(0,vocabulary.adverbs.length-1);
 			word = {
-				value:vocabulary.adverbs[wordIndex],
+				value:vocabulary.adverbs[wordIndex]
 			};
 			break;
 		case "Preposition":
 			wordIndex = getRandomNumber(0,vocabulary.prepositions.length-1);
 			word = {
-				value:vocabulary.prepositions[wordIndex],
+				value:vocabulary.prepositions[wordIndex]
 			};
 			break;
 		case "Conjunction":
 			wordIndex = getRandomNumber(0,vocabulary.conjunctions.length-1);
 			word = {
-				value:vocabulary.conjunctions[wordIndex],
+				value:vocabulary.conjunctions[wordIndex]
 			};
 			break;
 		case "Interjection":
 			wordIndex = getRandomNumber(0,vocabulary.interjections.length-1);
 			word = {
-				value:vocabulary.interjections[wordIndex],
+				value:vocabulary.interjections[wordIndex]
 			};
 	}
 	return word;
