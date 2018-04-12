@@ -46,7 +46,6 @@
 		"Preposition, Conjunction, Preposition, Noun, Verb, Adverb",
 		"Verb, Preposition, Noun",
 		"Adjective, Noun, Conjunction, Adjective, Noun",
-		"Adjective, Adjective, Adjective, Noun, Verb",
 		"Simile",
 		"Adverb, Gerund, Adverb, Gerund, Adverb, Gerund"
 	];
@@ -119,13 +118,6 @@
 				adjective = getRandomWord("Adjective");
 				noun = getRandomWord("Noun");
 				line += adjective.value + " " + noun.value;
-				break;
-			case "Adjective, Adjective, Adjective, Noun, Verb":
-				line += adjective.value + " ";
-				adjective = getRandomWord("Adjective");
-				line += adjective.value + " ";
-				adjective = getRandomWord("Adjective");
-				line += adjective.value + " " + noun.value + " " + verb.value;
 				break;
 			case "Simile":
 				if (getRandomNumber(0,1) == 0) {
