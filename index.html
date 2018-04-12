@@ -135,6 +135,7 @@
 					else {
 						line += "Like + " " + adjective.value + " " + noun.value;
 					}
+				}
 				else {
 					if (getRandomNumber(0,1) == 0) { 
 						line += "As" + " " + adverb.value + " " + "as" + " " + gerund.value;
@@ -240,5 +241,5 @@
 		}
 		return poem.join("");
 	}
-	document.write("<center>" + getRandomPoem(5) + "<br>" + getRandomPoem(6) + "<br>" + getRandomPoem(7) + "<br>" + getRandomPoem(8) + "<center>");
+	document.write("<center>" + getRandomPoem(5) + "<br>" + getRandomPoem(6) + "<br>" + getRandomPoem(7) + "<br>" + getRandomPoem(8) + "</center>");
 </script>
