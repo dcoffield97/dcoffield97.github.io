@@ -43,8 +43,8 @@
 		"Preposition, Noun, Conjunction, Pronoun, Verb",
 		"Adverb, Gerund, Preposition, Adjective, Noun",
 		"Adjective, Noun, Adjective, Noun, Adjective, Noun",
-		"Preposition, Conjunction, Preposition, Noun, Verb, Adverb",
-		"Verb, Preposition, Noun",
+		"Gerund, Preposition, Noun, Gerund, Adverb",
+		"Gerund, Preposition, Noun",
 		"Adjective, Noun, Conjunction, Adjective, Noun",
 		"Simile",
 		"Adverb, Gerund, Adverb, Gerund, Adverb, Gerund"
@@ -105,13 +105,13 @@
 				noun = getRandomWord("Noun");
 				line += adjective.value + " " + noun.value;
 				break;
-			case "Preposition, Conjunction, Preposition, Noun, Verb, Adverb":
-				line += firstLetterCapitalized(preposition.value) + " " + conjunction.value + " ";
-				preposition = getRandomWord("Preposition");
-				line += preposition.value + "," + " " + noun.value + " " + verb.value + " "  + adverb.value;
+			case "Gerund, Preposition, Noun, Gerund, Adverb":
+				line += firstLetterCapitalized(gerund.value) + " " + preposition.value + " " + noun.value + "," + " ";
+				gerund = getRandomWord("Gerund");
+				line += gerund.value + " " + adverb.value;
 				break;
-			case "Verb, Preposition, Noun":
-				line += firstLetterCapitalized(verb.value) + " " + preposition.value + " " + noun.value;
+			case "Gerund, Preposition, Noun":
+				line += firstLetterCapitalized(gerund.value) + " " + preposition.value + " " + noun.value;
 				break;
 			case "Adjective, Noun, Conjunction, Adjective, Noun":
 				line += firstLetterCapitalized(adjective.value) + " " + noun.value + " " + conjunction.value + " ";
