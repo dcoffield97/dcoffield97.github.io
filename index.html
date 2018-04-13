@@ -229,7 +229,7 @@
 	function getRandomPoem(numLines) {
 		var poem = [];
 		for (var i = 0; i < numLines; i++) {
-			poem.push(getRandomLine());
+			poem.push("<span id='" + i + "'>" + getRandomLine() + "</span>");
 		}
 		return poem.join("");
 	}
