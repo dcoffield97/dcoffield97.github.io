@@ -234,12 +234,13 @@
 		return poem.join("");
 	}
 	
-	function writeRandomPoem() {
-		document.getElementById("poemDiv").innerHTML = getRandomPoem(getRandomNumber(3,8));
+	function writeRandomPoem(numLines) {
+		document.getElementById("poemDiv").innerHTML = getRandomPoem(numLines);
 	}
 </script>
 <center>
 	<div id="poemDiv" style="height:500px;">
 	</div>
-	<input type="button" id="newPoem" onclick="writeRandomPoem()" value="Generate New Poem">
+	<input type="number" id="numLines" min="1" max="20" defaultValue="10">
+	<input type="button" id="newPoem" onclick="writeRandomPoem(document.getElementById('numLines').value)" value="Generate New Poem">
 </center>
