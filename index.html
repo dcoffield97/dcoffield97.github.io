@@ -229,26 +229,13 @@
 	function getRandomPoem(numLines) {
 		var poem = [];
 		for (var i = 0; i < numLines; i++) {
-			if (typeof document.getElementById(i) != "null") {
-				if (document.getElementById(i).className != "locked") {
-					poem.push("<span id='" + i + "' onclick=('lockLine(" + i + ")'>" + getRandomLine() + "</span>");
-				}
-				else {
-					poem.push("<span id='" + i + "' onclick=('lockLine(" + i + ")'" + " class='locked' style='font-weight:bold'>" + document.getElementById(i).innerText + "</span>");
-				}
-			}
-			else {
-				poem.push("<span id='" + i + "' onclick=('lockLine(" + i + ")'" + " class='locked' style='font-weight:bold'>" + document.getElementById(i).innerText + "</span>");
-			}
+			poem.push("<span id='" + i + "' onclick=('lockLine(" + i + ")'>" + getRandomLine() + "</span>");
 		}
 		return poem.join("");
 	}
 	
 	function lockLine(spanID) {
-		if (document.getElementById(spanID).className != "locked") {
-			document.getElementById(spanID).style.fontWeight = "bold";
-			document.getElementById(spanID).setAttribute("class","locked");
-		}
+		document.getElementById(spanID).innerText = getRandomLine();
 	}
 	
 	function writeRandomPoem(numLines) {
