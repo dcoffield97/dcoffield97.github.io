@@ -233,23 +233,13 @@
 		}
 		return poem.join("");
 	}
+	
+	function writeRandomPoem() {
+		document.getElementById("poemDiv").innerHTML = getRandomPoem(getRandomNumber(3,8));
+	}
 </script>
 <center>
 	<div id="poemDiv">
-		<script>
-			getRandomPoem(5);
-		</script>
-		<br>
-		<script>
-			getRandomPoem(6);
-		</script>
-		<br>
-		<script>
-			getRandomPoem(7);
-		</script>
-		<br>
-		<script>
-			getRandomPoem(8);
-		</script>
 	</div>
+	<input type="button" id="newPoem" onclick="writeRandomPoem()" value="Generate New Poem">
 </center>
