@@ -253,15 +253,17 @@
 		document.body.removeChild(pom);
 	}
 </script>
-<form style="background:#e2e2e2;" onsubmit="download(this['name'].value, this['poemDiv'].innerHTML)">
-	<center>
-		<h1>Random Poem Generator</h1><br>
-		<div id="poemDiv" style="height:500px;">
-		</div>
-		<label>Number of Lines</label>
-		<input type="number" id="numLines" min="1" max="25" placeholder="1-25"><br>
-		<input type="button" id="newPoem" onclick="writeRandomPoem(Math.floor(document.getElementById('numLines').value))" value="Generate New Poem"><br>
-		<input type="text" name="name" value="test.txt">
-		<input type="submit" value="Download">
-	</center>
-</form>
+<body style="background:#e2e2e2;">
+	<form onsubmit="download(this['name'].value, this['poemDiv'].innerHTML)">
+		<center>
+			<h1>Random Poem Generator</h1><br>
+			<div id="poemDiv" style="height:500px;">
+			</div>
+			<label>Number of Lines</label>
+			<input type="number" id="numLines" min="1" max="25" placeholder="1-25"><br>
+			<input type="button" id="newPoem" onclick="writeRandomPoem(Math.floor(document.getElementById('numLines').value))" value="Generate New Poem"><br>
+			<input type="text" name="name" value="test.txt">
+			<input type="submit" value="Download">
+		</center>
+	</form>
+</body>
