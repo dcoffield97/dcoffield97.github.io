@@ -38,7 +38,7 @@
 	};
 
 	var lineStructureOptions = [
-		"Adjective, Noun, Verb, Adverb",
+		"Adjective, Noun, Gerund, Adverb",
 		"Interjection, Pronoun, Verb, Adverb",
 		"Preposition, Noun, Conjunction, Pronoun, Verb",
 		"Adverb, Gerund, Preposition, Adjective, Noun",
@@ -79,8 +79,8 @@
 		var interjection = getRandomWord("Interjection");
 
 		switch (lineStructure) {
-			case "Adjective, Noun, Verb, Adverb":
-				line += firstLetterCapitalized(adjective.value) + " " + noun.value + " " + verb.value + " " + adverb.value;
+			case "Adjective, Noun, Gerund, Adverb":
+				line += firstLetterCapitalized(adjective.value) + " " + noun.value + " " + gerund.value + " " + adverb.value;
 				break;
 			case "Interjection, Pronoun, Verb, Adverb":
 				if (getRandomNumber(0,1) == 0) {
@@ -242,8 +242,18 @@
 			alert("Please enter a number between 1 and 25");
 		}
 	}
+	function download(filename, text) {
+		var pom = document.createElement('a');
+		pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + 
+		encodeURIComponent(text));
+		pom.setAttribute('download', filename);
+		pom.style.display = 'none';
+		document.body.appendChild(pom);
+		pom.click();
+		document.body.removeChild(pom);
+	}
 </script>
-<body style="background:#e2e2e2;">
+<form style="background:#e2e2e2;" onsubmit="download(this['name'].value, this['poemDiv'].innerHTML)">
 	<center>
 		<h1>Random Poem Generator</h1><br>
 		<div id="poemDiv" style="height:500px;">
@@ -251,5 +261,6 @@
 		<label>Number of Lines</label>
 		<input type="number" id="numLines" min="1" max="25" placeholder="1-25"><br>
 		<input type="button" id="newPoem" onclick="writeRandomPoem(Math.floor(document.getElementById('numLines').value))" value="Generate New Poem">
+		<input type="text" name="name" value="test.txt">
 	</center>
-</body>
+</form>
