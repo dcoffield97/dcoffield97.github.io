@@ -229,13 +229,13 @@
 	function getRandomPoem(numLines) {
 		var poem = [];
 		for (var i = 0; i < numLines; i++) {
-			poem.push("<span id='" + i + "' onclick=lockLine(" + i + ")>" + getRandomLine() + "</span>");
+			poem.push("<span id='" + i + "' onclick=changeLine(" + i + ")>" + getRandomLine() + "</span>");
 		}
 		return poem.join("");
 	}
 	
-	function lockLine(spanID) {
-		document.getElementById(spanID).innerText = getRandomLine();
+	function changeLine(spanID) {
+		document.getElementById(spanID).innerHTML = getRandomLine();
 	}
 	
 	function writeRandomPoem(numLines) {
