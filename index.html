@@ -49,7 +49,9 @@
 		"Simile",
 		"Adverb, Gerund, Adverb, Gerund, Adverb, Gerund"
 	];
-
+	
+	var numChanges = 0;
+	
 	/* 
 	 * Define a function to return a given string with the first letter capitalized.
 	 */
@@ -236,6 +238,7 @@
 	
 	function changeLine(spanID) {
 		document.getElementById(spanID).innerHTML = getRandomLine();
+		document.getElementById("changeCount").innerText = numChanges++;
 	}
 	
 	function writeRandomPoem(numLines) {
@@ -255,5 +258,6 @@
 		<label>Number of Lines</label>
 		<input type="number" id="numLines" min="1" max="25" placeholder="1-25"><br>
 		<input type="button" id="newPoem" onclick="writeRandomPoem(Math.floor(document.getElementById('numLines').value))" value="Generate New Poem"><br>
+		<span style="font-weight:bold;">Number of Changes:</span> <span id="changeCount"></span>
 	</center>
 </body>
