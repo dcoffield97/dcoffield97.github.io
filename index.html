@@ -255,10 +255,10 @@
 		<h1>Random Poem Generator</h1><br>
 		<div id="poemDiv" style="height:500px;">
 		</div>
-		<span style="font-weight:bold;">Number of Changes:</span>&nbsp;
+		<span>Number of Changes:</span>&nbsp;
 		<span id="changeCount">0</span><br>
-		<span style="font-weight:bold;">Number of Lines</span>&nbsp;
-		<input type="number" id="numLines" min="1" max="25" placeholder="1-25"><br>
+		<span>Number of Lines</span>&nbsp;
+		<input type="number" id="numLines" min="1" max="25" placeholder="1-25"><br><br>
 		<input type="button" id="newPoem" onclick="writeRandomPoem(Math.floor(document.getElementById('numLines').value))" value="Generate New Poem">
 	</center>
 </body>
