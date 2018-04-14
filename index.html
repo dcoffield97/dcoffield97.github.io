@@ -238,7 +238,7 @@
 	
 	function changeLine(spanID) {
 		document.getElementById(spanID).innerHTML = getRandomLine();
-		document.getElementById("changeCount").innerText = numChanges++;
+		document.getElementById("changeCount").innerText = ++numChanges;
 	}
 	
 	function writeRandomPoem(numLines) {
